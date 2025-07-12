@@ -12,9 +12,11 @@ header.hero {
 }
 
 .logo {
-  max-width: 100px;
+  max-width: 120px;
   height: auto;
   margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #000;
 }
 
 .cta {
@@ -62,4 +64,64 @@ header.hero {
 .contact a {
   color: #FFD700;
   text-decoration: none;
+}
+
+/* ✨ تنسيق قسم من نحن ونموذج الطلب */
+.about, .request-form {
+  background-color: #1a1a1a;
+  padding: 40px 20px;
+  margin-top: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #000;
+}
+
+.about h2, .request-form h2 {
+  text-align: center;
+  color: #FFD700;
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #eee;
+  text-align: center;
+  max-width: 700px;
+  margin: auto;
+}
+
+.request-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.request-form input,
+.request-form textarea,
+.request-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Cairo', sans-serif;
+  font-size: 16px;
+}
+
+.request-form input,
+.request-form textarea {
+  background-color: #333;
+  color: #fff;
+}
+
+.request-form button {
+  background-color: #FFD700;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.request-form button:hover {
+  background-color: #e6c200;
 }
