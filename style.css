@@ -53,22 +53,17 @@ header.hero {
 }
 
 .slider {
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  display: flex;
-  gap: 20px;
-  padding: 20px 0;
+  overflow: hidden;
+  position: relative;
 }
 
 .slides {
   display: flex;
   gap: 20px;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
+  animation: scrollSlider 30s linear infinite;
 }
 
 .slides img {
-  scroll-snap-align: center;
   max-width: 300px;
   width: 100%;
   border-radius: 8px;
@@ -78,6 +73,11 @@ header.hero {
 
 .slides img:hover {
   transform: scale(1.05);
+}
+
+@keyframes scrollSlider {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .about {
