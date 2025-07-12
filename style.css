@@ -30,9 +30,9 @@ header.hero {
   font-weight: bold;
 }
 
-.services, .gallery, .contact {
+.services, .gallery, .about, .request-form, .contact {
   padding: 40px 20px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
 }
 
@@ -46,39 +46,45 @@ header.hero {
   color: #FFD700;
 }
 
-.gallery .images {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 20px;
+.gallery h2, .about h2, .request-form h2, .contact h2 {
+  text-align: center;
+  color: #FFD700;
+  margin-bottom: 20px;
 }
 
-.gallery img {
+.slider {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.slides {
+  display: flex;
+  gap: 20px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.slides img {
+  scroll-snap-align: center;
   max-width: 300px;
   width: 100%;
   border-radius: 8px;
   box-shadow: 0 0 10px #000;
+  transition: transform 0.3s ease;
 }
 
-.contact a {
-  color: #FFD700;
-  text-decoration: none;
+.slides img:hover {
+  transform: scale(1.05);
 }
 
-/* ✨ تنسيق قسم من نحن ونموذج الطلب */
-.about, .request-form {
+.about {
   background-color: #1a1a1a;
-  padding: 40px 20px;
-  margin-top: 40px;
   border-radius: 10px;
   box-shadow: 0 0 20px #000;
-}
-
-.about h2, .request-form h2 {
-  text-align: center;
-  color: #FFD700;
-  margin-bottom: 20px;
+  margin-top: 40px;
 }
 
 .about p {
@@ -88,6 +94,13 @@ header.hero {
   text-align: center;
   max-width: 700px;
   margin: auto;
+}
+
+.request-form {
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #000;
+  margin-top: 40px;
 }
 
 .request-form form {
@@ -104,8 +117,8 @@ header.hero {
   padding: 12px;
   border: none;
   border-radius: 8px;
-  font-family: 'Cairo', sans-serif;
   font-size: 16px;
+  font-family: 'Cairo', sans-serif;
 }
 
 .request-form input,
@@ -124,4 +137,9 @@ header.hero {
 
 .request-form button:hover {
   background-color: #e6c200;
+}
+
+.contact a {
+  color: #FFD700;
+  text-decoration: none;
 }
