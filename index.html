@@ -1,39 +1,225 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="لمسة نجار - تصميم أثاث وديكورات خشبية حسب الطلب في السعودية. جودة عالية، توصيل وتركيب." />
-  <meta name="keywords" content="نجارة, أثاث خشبي, ديكور, تصميم داخلي, السعودية" />
-  <meta name="author" content="لمسة نجار" />
-  <meta property="og:title" content="لمسة نجار - تصميم أثاث وديكورات خشبية" />
-  <meta property="og:description" content="تصميم يلامس الذوق وجودة تصنع الفرق. تصميم أثاث حسب الطلب في السعودية." />
-  <meta property="og:image" content="https://yourdomain.com/images/logo.webp" />
-  <meta property="og:url" content="https://yourdomain.com" />
-  <title>لمسة نجار | تصميم أثاث وديكورات خشبية</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="لمسة نجار - تصميم أثاث وديكورات خشبية بجودة عالية ولمسة فنية سعودية.">
+  <meta name="keywords" content="نجارة, أثاث, ديكور خشبي, تصميم داخلي, السعودية">
+  <meta name="author" content="لمسة نجار">
+  <title>لمسة نجار للصناعات الخشبية</title>
+  
+  <!-- خطوط Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+  <!-- CSS -->
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background-color: #111;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+    .top-banner {
+      width: 100%;
+      background: linear-gradient(to left, #FFD700, #e6c200);
+      padding: 10px 0;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      color: #000;
+      animation: fadeInBanner 1.5s ease-out;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    @keyframes fadeInBanner {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    header.hero {
+      text-align: center;
+      padding: 40px 20px;
+      background: radial-gradient(circle, #222 0%, #111 100%);
+    }
+    .logo {
+      max-width: 120px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.5);
+    }
+    .cta {
+      display: inline-block;
+      background-color: #FFD700;
+      color: #000;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-weight: bold;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+    .cta:hover {
+      transform: scale(1.05);
+      background-color: #e6c200;
+    }
+    .services, .gallery, .about, .request-form, .contact {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .services h2, .gallery h2, .about h2, .request-form h2, .contact h2 {
+      text-align: center;
+      color: #FFD700;
+      margin-bottom: 20px;
+    }
+    .services ul {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+    }
+    .services li {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .services li::before {
+      content: "✔ ";
+      color: #FFD700;
+    }
+
+    /* سلايدر تفاعلي */
+    .slider-container {
+      position: relative;
+      max-width: 1000px;
+      margin: auto;
+      overflow: hidden;
+    }
+    .slider-wrapper {
+      overflow: hidden;
+    }
+    .slider-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .slider-track img {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #000;
+      transition: transform 0.3s;
+    }
+    .slider-track img:hover {
+      transform: scale(1.05);
+    }
+    .slider-container button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255, 215, 0, 0.8);
+      color: #000;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 22px;
+      border-radius: 50%;
+      z-index: 10;
+      transition: background-color 0.3s;
+    }
+    .slider-container button:hover {
+      background-color: #FFD700;
+    }
+    .slider-container .prev {
+      left: 10px;
+    }
+    .slider-container .next {
+      right: 10px;
+    }
+    @media (max-width: 768px) {
+      .slider-track img { max-width: 250px; }
+    }
+    @media (max-width: 480px) {
+      .slider-track img { max-width: 200px; }
+    }
+
+    .about {
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #000;
+    }
+    .about p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #eee;
+      text-align: center;
+      max-width: 700px;
+      margin: auto;
+    }
+    .request-form {
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #000;
+    }
+    .request-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 500px;
+      margin: auto;
+    }
+    .request-form input,
+    .request-form textarea,
+    .request-form button {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .request-form input,
+    .request-form textarea {
+      background-color: #333;
+      color: #fff;
+    }
+    .request-form button {
+      background-color: #FFD700;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .request-form button:hover {
+      background-color: #e6c200;
+      transform: scale(1.05);
+    }
+    .contact {
+      text-align: center;
+      border-top: 1px solid #333;
+    }
+    .contact a {
+      color: #FFD700;
+      text-decoration: none;
+    }
+    .contact a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <!-- Preloader -->
-  <div id="preloader" aria-hidden="true">
-    <div class="spinner"></div>
+
+  <!-- بانر -->
+  <div class="top-banner">
+    <span>✨ أهلاً بك في عالم التصميم الحرفي من لمسة نجار ✨</span>
   </div>
 
-  <!-- Header -->
-  <header class="hero" role="banner">
-    <img src="images/logo.webp" alt="شعار لمسة نجار" class="logo" width="120" height="120" loading="eager" />
-    <h1>مصنع لمسة نجار</h1>
+  <!-- هيدر -->
+  <header class="hero">
+    <img src="images/logo.png" alt="شعار لمسة نجار" class="logo" loading="lazy">
+    <h1>🪵 مصنع لمسة نجار</h1>
     <p>تصميم يلامس الذوق… وجودة تصنع الفرق</p>
-    <a href="https://wa.me/966506786367" class="cta" target="_blank" rel="noopener">احجز عبر واتساب</a>
+    <a href="https://wa.me/966506786367" target="_blank" rel="noopener" class="cta">📱 احجز عبر واتساب</a>
   </header>
 
-  <!-- Services -->
-  <section id="services" class="services" aria-labelledby="services-heading">
-    <h2 id="services-heading">خدماتنا</h2>
+  <!-- الخدمات -->
+  <section class="services">
+    <h2>خدماتنا</h2>
     <ul>
       <li>تصميم أثاث منزلي ومكتبي حسب الطلب</li>
       <li>ديكورات داخلية بجودة عالية</li>
@@ -41,47 +227,74 @@
     </ul>
   </section>
 
-  <!-- Gallery -->
-  <section id="gallery" class="gallery" aria-labelledby="gallery-heading">
-    <h2 id="gallery-heading">صور من أعمالنا</h2>
+  <!-- المعرض -->
+  <section class="gallery">
+    <h2>📸 صور من أعمالنا</h2>
     <div class="slider-container">
-      <button class="slider-btn prev" aria-label="الصورة السابقة">&#10094;</button>
+      <button class="prev">&#10094;</button>
       <div class="slider-wrapper">
         <div class="slider-track">
-          <!-- سيتم ملؤها بالـ JS -->
+          <img src="images/work1.jpg" alt="ديكور خشبي" loading="lazy">
+          <img src="images/work2.jpg" alt="أثاث مكتبي" loading="lazy">
+          <img src="images/work3.jpg" alt="تفصيل يدوي" loading="lazy">
+          <img src="images/work4.jpg" alt="تصميم خشبي إضافي" loading="lazy">
+          <img src="images/work5.jpg" alt="تفصيل مميز" loading="lazy">
+          <img src="images/work6.jpg" alt="خشب منحوت" loading="lazy">
+          <img src="images/work7.jpg" alt="تصميم جداري" loading="lazy">
         </div>
       </div>
-      <button class="slider-btn next" aria-label="الصورة التالية">&#10095;</button>
+      <button class="next">&#10095;</button>
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about" class="about" aria-labelledby="about-heading">
-    <h2 id="about-heading">من نحن</h2>
-    <p>نحن "لمسة نجار"، علامة سعودية لصناعة الأثاث والديكورات الخشبية المصممة حسب الذوق المحلي والعالمي. نؤمن بأن الخشب ليس مجرد خامة، بل روح تُشكّلها الأيدي الماهرة بإحساس وذوق.</p>
+  <!-- من نحن -->
+  <section class="about">
+    <h2>من نحن</h2>
+    <p>
+      نحن "لمسة نجار"، علامة سعودية لصناعة الأثاث والديكورات الخشبية المصممة حسب الذوق المحلي والعالمي.<br>
+      نؤمن بأن الخشب ليس مجرد خامة، بل روح تُشكّلها الأيدي الماهرة بإحساس وذوق.
+    </p>
   </section>
 
-  <!-- Form -->
-  <section id="request" class="request-form" aria-labelledby="request-heading">
-    <h2 id="request-heading">اطلب خدمتك الآن</h2>
-    <form id="contact-form" action="https://formspree.io/f/YOUR_ID" method="POST">
-      <label for="name">الاسم الكامل</label>
-      <input type="text" id="name" name="name" required />
-      <label for="phone">رقم التواصل</label>
-      <input type="tel" id="phone" name="phone" required />
-      <label for="message">تفاصيل الخدمة المطلوبة</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
-      <button type="submit">إرسال الطلب</button>
+  <!-- نموذج الطلب -->
+  <section class="request-form">
+    <h2>🔧 اطلب خدمتك الآن</h2>
+    <form action="mailto:Mohammed@carpenter-touch.com" method="POST" enctype="text/plain">
+      <input type="text" name="name" placeholder="اسمك" aria-label="اسمك" required>
+      <input type="tel" name="phone" placeholder="رقم التواصل" aria-label="رقم التواصل" required>
+      <textarea name="details" placeholder="ما نوع الخدمة المطلوبة؟" rows="4" aria-label="تفاصيل الخدمة" required></textarea>
+      <button type="submit">📩 إرسال الطلب</button>
     </form>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
+  <!-- الفوتر -->
+  <footer class="contact">
+    <h2>📞 تواصل معنا</h2>
     <p>رقم الهاتف: <a href="https://wa.me/966506786367">00966506786367</a></p>
-    <p>البريد الإلكتروني: <a href="mailto:Mohammed@carpenter-touch.com">Mohammed@carpenter-touch.com</a></p>
-    <p>&copy; 2025 لمسة نجار - جميع الحقوق محفوظة</p>
+    <p>📧 البريد الإلكتروني: <a href="mailto:Mohammed@carpenter-touch.com">Mohammed@carpenter-touch.com</a></p>
+    <p>© 2025 لمسة نجار - جميع الحقوق محفوظة</p>
   </footer>
 
-  <script type="module" src="js/main.js" defer></script>
-</body>
-</html>
+  <!-- JavaScript للسلايدر -->
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const track = document.querySelector(".slider-track");
+    const prevBtn = document.querySelector(".prev");
+    const nextBtn = document.querySelector(".next");
+    const slides = Array.from(track.children);
+    
+    let index = 0;
+    const slideWidth = slides[0].getBoundingClientRect().width + 20;
+
+    function updateSlider() {
+      track.style.transform = `translateX(-${index * slideWidth}px)`;
+    }
+
+    nextBtn.addEventListener("click", () => {
+      if (index < slides.length - 3) {
+        index++;
+        updateSlider();
+      }
+    });
+
+    prevBtn.addEventListener
