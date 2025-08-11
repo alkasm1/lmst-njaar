@@ -1,27 +1,51 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>لمسة نجار للصناعات الخشبية</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body dir="rtl">
+  <meta name="description" content="لمسة نجار - تصميم أثاث وديكورات خشبية سعودية بجودة عالية ولمسة فنية مميزة.">
+  <meta name="keywords" content="نجارة, أثاث, ديكور, خشب, تصميم داخلي, السعودية">
+  <meta name="author" content="لمسة نجار">
 
-  <!-- ✅ بانر علوي متحرك -->
-  <div class="top-banner">
-    <span>✨ أهلاً بك في عالم التصميم الحرفي من لمسة نجار ✨</span>
+  <!-- Open Graph for social sharing -->
+  <meta property="og:title" content="لمسة نجار للصناعات الخشبية">
+  <meta property="og:description" content="إبداع سعودي في تصميم الأثاث والديكور الخشبي">
+  <meta property="og:image" content="images/cover.jpg">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="لمسة نجار للصناعات الخشبية">
+  <meta name="twitter:description" content="إبداع سعودي في تصميم الأثاث والديكور الخشبي">
+
+  <title>لمسة نجار للصناعات الخشبية</title>
+
+  <!-- Fonts -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.ico">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- بانر -->
+  <div class="top-banner" role="banner">
+    ✨ أهلاً بك في عالم التصميم الحرفي من لمسة نجار ✨
   </div>
 
+  <!-- هيدر -->
   <header class="hero">
-    <img src="images/logo.png" alt="شعار لمسة نجار" class="logo">
+    <img src="images/logo.png" alt="شعار لمسة نجار" class="logo" loading="lazy" decoding="async">
     <h1>🪵 مصنع لمسة نجار</h1>
     <p>تصميم يلامس الذوق… وجودة تصنع الفرق</p>
-    <a href="https://wa.me/966506786367" target="_blank" class="cta">📱 احجز عبر واتساب</a>
+    <a href="https://wa.me/966506786367" target="_blank" rel="noopener" class="cta">📱 احجز عبر واتساب</a>
   </header>
 
-  <section class="services">
+  <!-- الخدمات -->
+  <section class="services" id="services">
     <h2>خدماتنا</h2>
     <ul>
       <li>تصميم أثاث منزلي ومكتبي حسب الطلب</li>
@@ -30,74 +54,51 @@
     </ul>
   </section>
 
-  <!-- ✅ معرض الصور الجديد -->
-  <section class="gallery">
+  <!-- المعرض -->
+  <section class="gallery" id="gallery">
     <h2>📸 صور من أعمالنا</h2>
-    <div class="gallery-grid">
-      <img src="images/work1.jpg" alt="ديكور خشبي" loading="lazy">
-      <img src="images/work2.jpg" alt="أثاث مكتبي" loading="lazy">
-      <img src="images/work3.jpg" alt="تفصيل يدوي" loading="lazy">
-      <img src="images/work4.jpg" alt="تصميم خشبي إضافي" loading="lazy">
-      <img src="images/work5.jpg" alt="تفصيل مميز" loading="lazy">
-      <img src="images/work6.jpg" alt="خشب منحوت" loading="lazy">
-      <img src="images/work7.jpg" alt="تصميم جداري" loading="lazy">
+    <div class="slider-container">
+      <button class="prev">&#10094;</button>
+      <div class="slider-wrapper">
+        <div class="slider-track">
+          <img src="images/work1.webp" alt="ديكور خشبي" loading="lazy">
+          <img src="images/work2.webp" alt="أثاث مكتبي" loading="lazy">
+          <img src="images/work3.webp" alt="تفصيل يدوي" loading="lazy">
+        </div>
+      </div>
+      <button class="next">&#10095;</button>
     </div>
   </section>
 
-  <!-- نافذة تكبير الصور -->
-  <div id="lightbox">
-    <span class="close">&times;</span>
-    <img class="lightbox-content" id="lightbox-img">
-  </div>
-
-  <section class="about">
+  <!-- من نحن -->
+  <section class="about" id="about">
     <h2>من نحن</h2>
-    <p>نحن "لمسة نجار"، علامة سعودية لصناعة الأثاث والديكورات الخشبية المصممة حسب الذوق المحلي والعالمي.<br>
-    نؤمن بأن الخشب ليس مجرد خامة، بل روح تُشكّلها الأيدي الماهرة بإحساس وذوق.</p>
+    <p>
+      نحن "لمسة نجار"، علامة سعودية لصناعة الأثاث والديكورات الخشبية المصممة حسب الذوق المحلي والعالمي.
+      نؤمن بأن الخشب ليس مجرد خامة، بل روح تُشكّلها الأيدي الماهرة بإحساس وذوق.
+    </p>
   </section>
 
-  <section class="request-form">
+  <!-- نموذج الطلب -->
+  <section class="request-form" id="order">
     <h2>🔧 اطلب خدمتك الآن</h2>
-    <form action="mailto:Mohammed@carpenter-touch.com" method="POST" enctype="text/plain">
+    <form id="contactForm" method="POST">
       <input type="text" name="name" placeholder="اسمك" required>
       <input type="tel" name="phone" placeholder="رقم التواصل" required>
-      <textarea name="details" placeholder="ما نوع الخدمة المطلوبة؟" rows="4" required></textarea>
+      <textarea name="details" placeholder="نوع الخدمة المطلوبة" rows="4" required></textarea>
       <button type="submit">📩 إرسال الطلب</button>
     </form>
+    <p class="form-msg" aria-live="polite"></p>
   </section>
 
+  <!-- الفوتر -->
   <footer class="contact">
     <h2>📞 تواصل معنا</h2>
-    <p>رقم الهاتف: <a href="https://wa.me/966506786367">00966506786367</a></p>
-    <p>📧 البريد الإلكتروني: <a href="mailto:Mohammed@carpenter-touch.com">Mohammed@carpenter-touch.com</a></p>
+    <p>📱 <a href="https://wa.me/966506786367">00966506786367</a></p>
+    <p>📧 <a href="mailto:Mohammed@carpenter-touch.com">Mohammed@carpenter-touch.com</a></p>
+    <p>© 2025 لمسة نجار - جميع الحقوق محفوظة</p>
   </footer>
 
-  <script>
-    // تكبير الصورة عند الضغط عليها
-    const images = document.querySelectorAll('.gallery-grid img');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const closeBtn = document.querySelector('.close');
-
-    images.forEach(img => {
-      img.addEventListener('click', () => {
-        lightbox.style.display = 'block';
-        lightboxImg.src = img.src;
-      });
-    });
-
-    // إغلاق النافذة عند الضغط على ×
-    closeBtn.addEventListener('click', () => {
-      lightbox.style.display = 'none';
-    });
-
-    // إغلاق النافذة عند الضغط خارج الصورة
-    lightbox.addEventListener('click', (e) => {
-      if (e.target !== lightboxImg) {
-        lightbox.style.display = 'none';
-      }
-    });
-  </script>
-
+  <script src="script.js" defer></script>
 </body>
 </html>
