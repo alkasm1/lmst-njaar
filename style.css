@@ -1,0 +1,176 @@
+body {
+  margin: 0;
+  font-family: 'Cairo', sans-serif;
+  background-color: #111;
+  color: #fff;
+}
+
+/* ✅ بانر متحرك */
+.top-banner {
+  width: 100%;
+  background: linear-gradient(to left, #FFD700, #e6c200);
+  padding: 10px 0;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  animation: fadeInBanner 1.5s ease-out;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+@keyframes fadeInBanner {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+header.hero {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #222;
+}
+
+.logo {
+  max-width: 120px;
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(255,255,255,0.5);
+}
+
+.cta {
+  display: inline-block;
+  background-color: #FFD700;
+  color: #000;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* الأقسام العامة */
+.services, .gallery, .about, .request-form, .contact {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.services ul {
+  list-style: none;
+  padding: 0;
+}
+.services li::before {
+  content: "✔ ";
+  color: #FFD700;
+}
+
+/* ✅ شبكة الصور */
+.gallery h2 {
+  text-align: center;
+  color: #FFD700;
+  margin-bottom: 20px;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+.gallery-grid img {
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255,215,0,0.5);
+}
+
+/* نافذة التكبير */
+#lightbox {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+#lightbox-img {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80%;
+}
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #FFD700;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close:hover {
+  color: white;
+}
+
+/* قسم من نحن وطلب الخدمة */
+.about, .request-form {
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #000;
+  margin-top: 40px;
+}
+.about h2, .request-form h2, .contact h2 {
+  text-align: center;
+  color: #FFD700;
+  margin-bottom: 20px;
+}
+.about p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #eee;
+  text-align: center;
+  max-width: 700px;
+  margin: auto;
+}
+
+.request-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: auto;
+}
+.request-form input,
+.request-form textarea,
+.request-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Cairo', sans-serif;
+}
+.request-form input,
+.request-form textarea {
+  background-color: #333;
+  color: #fff;
+}
+.request-form button {
+  background-color: #FFD700;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.request-form button:hover {
+  background-color: #e6c200;
+}
+
+.contact a {
+  color: #FFD700;
+  text-decoration: none;
+}
