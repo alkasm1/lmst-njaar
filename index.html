@@ -1,107 +1,648 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="لمسة نجار - تصميم أثاث وديكورات خشبية سعودية بجودة عالية ولمسة فنية مميزة.">
-  <meta name="keywords" content="نجارة, أثاث, ديكور, خشب, تصميم داخلي, السعودية">
-  <meta name="author" content="لمسة نجار">
-
-  <!-- Open Graph for social sharing -->
-  <meta property="og:title" content="لمسة نجار للصناعات الخشبية">
-  <meta property="og:description" content="إبداع سعودي في تصميم الأثاث والديكور الخشبي">
-  <meta property="og:image" content="images/cover.jpg">
-  <meta property="og:type" content="website">
-  
-  <!-- Twitter Cards -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="لمسة نجار للصناعات الخشبية">
-  <meta name="twitter:description" content="إبداع سعودي في تصميم الأثاث والديكور الخشبي">
-
-  <title>لمسة نجار للصناعات الخشبية</title>
-
-  <!-- Fonts -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.ico">
-
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لمسة نجار للصناعات الخشبية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'cairo': ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        'wood': {
+                            50: '#fdf8f3',
+                            100: '#faf1e6',
+                            200: '#f3dcc0',
+                            300: '#ebc59a',
+                            400: '#dc9c4e',
+                            500: '#cd7f32',
+                            600: '#b8692a',
+                            700: '#a05423',
+                            800: '#84461f',
+                            900: '#6d3a1c',
+                        },
+                        'sage': {
+                            50: '#f6f7f6',
+                            100: '#e3e7e3',
+                            200: '#c7d0c7',
+                            300: '#a3b1a3',
+                            400: '#7a8f7a',
+                            500: '#5a7357',
+                            600: '#475b45',
+                            700: '#3a4938',
+                            800: '#303b2f',
+                            900: '#2a322a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #5a7357 0%, #475b45 50%, #3a4938 100%);
+        }
+        
+        .wood-texture {
+            background-image: 
+                radial-gradient(circle at 25% 25%, #dc9c4e 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, #cd7f32 0%, transparent 50%);
+            background-size: 30px 30px;
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(90, 115, 87, 0.8), rgba(71, 91, 69, 0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .navbar-scroll {
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-scroll.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
-<body>
+<body class="bg-white text-gray-800 overflow-x-hidden scroll-smooth" dir="rtl">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 navbar-scroll" id="navbar">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-reverse space-x-3">
+                    <div class="w-10 h-10 bg-wood-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-hammer text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold text-sage-800">لمسة نجار</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-reverse space-x-8">
+                    <a href="#home" class="text-sage-700 hover:text-wood-500 transition-colors font-medium">الرئيسية</a>
+                    <a href="#services" class="text-sage-700 hover:text-wood-500 transition-colors font-medium">خدماتنا</a>
+                    <a href="#gallery" class="text-sage-700 hover:text-wood-500 transition-colors font-medium">أعمالنا</a>
+                    <a href="#about" class="text-sage-700 hover:text-wood-500 transition-colors font-medium">من نحن</a>
+                    <a href="#contact" class="text-sage-700 hover:text-wood-500 transition-colors font-medium">تواصل معنا</a>
+                </div>
+                
+                <a href="https://wa.me/966506786367" class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition-colors flex items-center space-x-reverse space-x-2">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>واتساب</span>
+                </a>
+                
+                <button class="md:hidden text-sage-700" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden bg-white shadow-lg hidden" id="mobile-menu">
+            <div class="px-4 py-2 space-y-3">
+                <a href="#home" class="block text-sage-700 hover:text-wood-500 py-2">الرئيسية</a>
+                <a href="#services" class="block text-sage-700 hover:text-wood-500 py-2">خدماتنا</a>
+                <a href="#gallery" class="block text-sage-700 hover:text-wood-500 py-2">أعمالنا</a>
+                <a href="#about" class="block text-sage-700 hover:text-wood-500 py-2">من نحن</a>
+                <a href="#contact" class="block text-sage-700 hover:text-wood-500 py-2">تواصل معنا</a>
+            </div>
+        </div>
+    </nav>
 
-  <!-- بانر -->
-  <div class="top-banner" role="banner">
-    ✨ أهلاً بك في عالم التصميم الحرفي من لمسة نجار ✨
-  </div>
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen hero-gradient flex items-center relative overflow-hidden">
+        <div class="absolute inset-0 wood-texture opacity-10"></div>
+        <div class="container mx-auto px-4 z-10">
+            <div class="max-w-4xl mx-auto text-center text-white">
+                <div class="animate-fade-in-up">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                        ✨ لمسة نجار ✨
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-medium mb-8 text-wood-100">
+                        للصناعات الخشبية
+                    </h2>
+                    <p class="text-xl md:text-2xl mb-12 text-wood-50 leading-relaxed">
+                        تصميم يلامس الذوق… وجودة تصنع الفرق
+                    </p>
+                    
+                    <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-reverse md:space-x-6">
+                        <a href="#services" class="bg-wood-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-wood-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            استكشف خدماتنا
+                        </a>
+                        <a href="#gallery" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-sage-800 transition-all duration-300">
+                            شاهد أعمالنا
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
 
-  <!-- هيدر -->
-  <header class="hero">
-    <img src="images/logo.png" alt="شعار لمسة نجار" class="logo" loading="lazy" decoding="async">
-    <h1>🪵 مصنع لمسة نجار</h1>
-    <p>تصميم يلامس الذوق… وجودة تصنع الفرق</p>
-    <a href="https://wa.me/966506786367" target="_blank" rel="noopener" class="cta">📱 احجز عبر واتساب</a>
-  </header>
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gradient-to-b from-sage-50 to-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-sage-800 mb-6">خدماتنا</h2>
+                <p class="text-xl text-sage-600 max-w-3xl mx-auto leading-relaxed">
+                    نقدم مجموعة متكاملة من الخدمات المتخصصة في صناعة الأثاث والديكورات الخشبية
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="w-16 h-16 bg-wood-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-couch text-wood-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-sage-800 mb-4 text-center">تصميم أثاث حسب الطلب</h3>
+                    <p class="text-sage-600 text-center leading-relaxed">
+                        تصميم وتصنيع أثاث منزلي ومكتبي مخصص وفقاً لمتطلباتك وأذواقك الخاصة بأعلى معايير الجودة
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="w-16 h-16 bg-wood-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-paint-brush text-wood-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-sage-800 mb-4 text-center">ديكورات داخلية</h3>
+                    <p class="text-sage-600 text-center leading-relaxed">
+                        تصميم وتنفيذ ديكورات داخلية خشبية فاخرة تضفي طابعاً مميزاً على مساحاتك
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="w-16 h-16 bg-wood-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-truck text-wood-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-sage-800 mb-4 text-center">توصيل وتركيب</h3>
+                    <p class="text-sage-600 text-center leading-relaxed">
+                        خدمة توصيل وتركيب احترافية داخل المملكة العربية السعودية مع ضمان شامل
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- الخدمات -->
-  <section class="services" id="services">
-    <h2>خدماتنا</h2>
-    <ul>
-      <li>تصميم أثاث منزلي ومكتبي حسب الطلب</li>
-      <li>ديكورات داخلية بجودة عالية</li>
-      <li>توصيل وتركيب داخل المملكة</li>
-    </ul>
-  </section>
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-sage-800 mb-6">معرض أعمالنا</h2>
+                <p class="text-xl text-sage-600 max-w-3xl mx-auto leading-relaxed">
+                    استكشف مجموعة من أفضل أعمالنا التي تعكس الجودة والحرفية المتميزة
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div class="gallery-item h-48 bg-gradient-to-br from-wood-200 to-wood-300">
+                    <div class="gallery-overlay">
+                        <div class="text-center">
+                            <i class="fas fa-eye text-white text-2xl mb-2"></i>
+                            <p class="text-white font-semibold">مكتبة منزلية</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item h-48 bg-gradient-to-br from-sage-200 to-sage-300">
+                    <div class="gallery-overlay">
+                        <div class="text-center">
+                            <i class="fas fa-eye text-white text-2xl mb-2"></i>
+                            <p class="text-white font-semibold">غرفة نوم</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item h-48 bg-gradient-to-br from-wood-300 to-wood-400">
+                    <div class="gallery-overlay">
+                        <div class="text-center">
+                            <i class="fas fa-eye text-white text-2xl mb-2"></i>
+                            <p class="text-white font-semibold">مكتب تنفيذي</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item h-48 bg-gradient-to-br from-sage-300 to-sage-400">
+                    <div class="gallery-overlay">
+                        <div class="text-center">
+                            <i class="fas fa-eye text-white text-2xl mb-2"></i>
+                            <p class="text-white font-semibold">غرفة معيشة</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item h-48 bg-gradient-to-br from-wood-400 to-wood-500">
+                    <div class="gallery-overlay">
+                        <div class="text-center">
+                            <i class="fas fa-eye text-white text-2xl mb-2"></i>
+                            <p class="text-white font-semibold">مطبخ خشبي</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item h-48 bg-gradient-to-br from-sage-400 to-sage-500">
+                    <div class="gallery-overlay">
+                        <div class="text-center">
+                            <i class="fas fa-eye text-white text-2xl mb-2"></i>
+                            <p class="text-white font-semibold">ديكور حائط</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item h-48 bg-gradient-to-br from-wood-300 to-wood-500">
+                    <div class="gallery-overlay">
+                        <div class="text-center">
+                            <i class="fas fa-eye text-white text-2xl mb-2"></i>
+                            <p class="text-white font-semibold">طاولة طعام</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item h-48 bg-gradient-to-br from-sage-300 to-sage-500">
+                    <div class="gallery-overlay">
+                        <div class="text-center">
+                            <i class="fas fa-eye text-white text-2xl mb-2"></i>
+                            <p class="text-white font-semibold">خزانة ملابس</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button class="bg-wood-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-wood-600 transition-colors">
+                    مشاهدة المزيد
+                </button>
+            </div>
+        </div>
+    </section>
 
-  <!-- المعرض -->
-  <section class="gallery" id="gallery">
-    <h2>📸 صور من أعمالنا</h2>
-    <div class="slider-container">
-      <button class="prev">&#10094;</button>
-      <div class="slider-wrapper">
-        <div class="slider-track">
-          <img src="images/work1.webp" alt="ديكور خشبي" loading="lazy">
-          <img src="images/work2.webp" alt="أثاث مكتبي" loading="lazy">
-          <img src="images/work3.webp" alt="تفصيل يدوي" loading="lazy">
-      <img src="images/work4.webp" alt="أثاث مكتبي" loading="lazy">
-          <img src="images/work5.webp" alt="تفصيل يدوي" loading="lazy">
-      <img src="images/work6.webp" alt="أثاث مكتبي" loading="lazy">
-          <img src="images/work7.webp" alt="تفصيل يدوي" loading="lazy">
-      </div>
-      <button class="next">&#10095;</button>
-    </div>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gradient-to-b from-sage-50 to-wood-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-sage-800 mb-6">من نحن</h2>
+                </div>
+                
+                <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h3 class="text-3xl font-bold text-sage-800 mb-6">🪵 مصنع لمسة نجار</h3>
+                            <p class="text-lg text-sage-600 leading-relaxed mb-6">
+                                نحن "لمسة نجار"، علامة سعودية متخصصة في صناعة الأثاث والديكورات الخشبية المصممة حسب الذوق المحلي والعالمي.
+                            </p>
+                            <p class="text-lg text-sage-600 leading-relaxed mb-8">
+                                نؤمن بأن الخشب ليس مجرد خامة، بل روح تُشكّلها الأيدي الماهرة بإحساس وذوق رفيع.
+                            </p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-reverse space-x-3">
+                                    <i class="fas fa-check-circle text-wood-500 text-xl"></i>
+                                    <span class="text-sage-700 font-medium">خبرة واسعة في التصميم والتصنيع</span>
+                                </div>
+                                <div class="flex items-center space-x-reverse space-x-3">
+                                    <i class="fas fa-check-circle text-wood-500 text-xl"></i>
+                                    <span class="text-sage-700 font-medium">استخدام أجود أنواع الأخشاب</span>
+                                </div>
+                                <div class="flex items-center space-x-reverse space-x-3">
+                                    <i class="fas fa-check-circle text-wood-500 text-xl"></i>
+                                    <span class="text-sage-700 font-medium">فريق عمل متخصص ومحترف</span>
+                                </div>
+                                <div class="flex items-center space-x-reverse space-x-3">
+                                    <i class="fas fa-check-circle text-wood-500 text-xl"></i>
+                                    <span class="text-sage-700 font-medium">ضمان شامل على جميع المنتجات</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-48 h-48 bg-gradient-to-br from-wood-400 to-wood-600 rounded-full mx-auto flex items-center justify-center shadow-2xl">
+                                <i class="fas fa-hammer text-6xl text-white"></i>
+                            </div>
+                            <p class="text-sage-600 mt-6 text-lg font-medium">
+                                حرفية متقنة منذ التأسيس
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- من نحن -->
-  <section class="about" id="about">
-    <h2>من نحن</h2>
-    <p>
-      نحن "لمسة نجار"، علامة سعودية لصناعة الأثاث والديكورات الخشبية المصممة حسب الذوق المحلي والعالمي.
-      نؤمن بأن الخشب ليس مجرد خامة، بل روح تُشكّلها الأيدي الماهرة بإحساس وذوق.
-    </p>
-  </section>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-sage-800 mb-6">تواصل معنا</h2>
+                    <p class="text-xl text-sage-600 max-w-3xl mx-auto leading-relaxed">
+                        نحن هنا لخدمتك وتحويل أفكارك إلى واقع خشبي مميز
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Contact Form -->
+                    <div class="bg-gradient-to-br from-sage-50 to-wood-50 rounded-3xl p-8">
+                        <h3 class="text-2xl font-bold text-sage-800 mb-6">🔧 اطلب خدمتك الآن</h3>
+                        
+                        <form id="contact-form" class="space-y-6">
+                            <div>
+                                <label class="block text-sage-700 font-semibold mb-2">الاسم</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-xl border border-sage-200 focus:border-wood-500 focus:outline-none transition-colors text-base" placeholder="اسمك الكريم" required>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sage-700 font-semibold mb-2">رقم الهاتف</label>
+                                <input type="tel" class="w-full px-4 py-3 rounded-xl border border-sage-200 focus:border-wood-500 focus:outline-none transition-colors text-base" placeholder="رقم الهاتف" required>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sage-700 font-semibold mb-2">نوع الخدمة</label>
+                                <select class="w-full px-4 py-3 rounded-xl border border-sage-200 focus:border-wood-500 focus:outline-none transition-colors text-base" required>
+                                    <option value="">اختر نوع الخدمة</option>
+                                    <option value="furniture">تصميم أثاث</option>
+                                    <option value="decoration">ديكورات داخلية</option>
+                                    <option value="custom">تصميم حسب الطلب</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sage-700 font-semibold mb-2">تفاصيل الطلب</label>
+                                <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-sage-200 focus:border-wood-500 focus:outline-none transition-colors text-base resize-none" placeholder="اكتب تفاصيل طلبك هنا..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-wood-500 text-white py-4 rounded-xl font-semibold text-lg hover:bg-wood-600 transition-colors transform hover:scale-105 duration-300">
+                                📩 إرسال الطلب
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Contact Info -->
+                    <div class="space-y-8">
+                        <div class="bg-white rounded-3xl p-8 shadow-lg border border-sage-100">
+                            <h3 class="text-2xl font-bold text-sage-800 mb-6">معلومات التواصل</h3>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-center space-x-reverse space-x-4">
+                                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                        <i class="fab fa-whatsapp text-green-600 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sage-800">واتساب</p>
+                                        <a href="https://wa.me/966506786367" class="text-green-600 hover:text-green-700 transition-colors">00966506786367</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center space-x-reverse space-x-4">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-envelope text-blue-600 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sage-800">البريد الإلكتروني</p>
+                                        <a href="mailto:Mohammed@carpenter-touch.com" class="text-blue-600 hover:text-blue-700 transition-colors">Mohammed@carpenter-touch.com</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center space-x-reverse space-x-4">
+                                    <div class="w-12 h-12 bg-wood-100 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-map-marker-alt text-wood-600 text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sage-800">الخدمة</p>
+                                        <p class="text-sage-600">جميع أنحاء المملكة العربية السعودية</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-wood-500 to-wood-600 rounded-3xl p-8 text-white text-center">
+                            <h3 class="text-2xl font-bold mb-4">📱 احجز عبر واتساب</h3>
+                            <p class="mb-6 opacity-90">تواصل معنا مباشرة للحصول على استشارة مجانية</p>
+                            <a href="https://wa.me/966506786367" class="bg-white text-wood-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors inline-flex items-center space-x-reverse space-x-2">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>تواصل الآن</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- نموذج الطلب -->
-  <section class="request-form" id="order">
-    <h2>🔧 اطلب خدمتك الآن</h2>
-    <form id="contactForm" method="POST">
-      <input type="text" name="name" placeholder="اسمك" required>
-      <input type="tel" name="phone" placeholder="رقم التواصل" required>
-      <textarea name="details" placeholder="نوع الخدمة المطلوبة" rows="4" required></textarea>
-      <button type="submit">📩 إرسال الطلب</button>
-    </form>
-    <p class="form-msg" aria-live="polite"></p>
-  </section>
+    <!-- Footer -->
+    <footer class="bg-sage-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-reverse space-x-3 mb-4">
+                    <div class="w-10 h-10 bg-wood-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-hammer text-white"></i>
+                    </div>
+                    <span class="text-2xl font-bold">لمسة نجار</span>
+                </div>
+                <p class="text-sage-200 mb-4">للصناعات الخشبية</p>
+                <p class="text-sage-300 text-sm">© 2025 لمسة نجار - جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
 
-  <!-- الفوتر -->
-  <footer class="contact">
-    <h2>📞 تواصل معنا</h2>
-    <p>📱 <a href="https://wa.me/966506786367">00966506786367</a></p>
-    <p>📧 <a href="mailto:Mohammed@carpenter-touch.com">Mohammed@carpenter-touch.com</a></p>
-    <p>© 2025 لمسة نجار - جميع الحقوق محفوظة</p>
-  </footer>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
 
-  <script src="script.js" defer></script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = this.querySelector('input[type="text"]').value;
+            const phone = this.querySelector('input[type="tel"]').value;
+            const service = this.querySelector('select').value;
+            const details = this.querySelector('textarea').value;
+            
+            // Create WhatsApp message
+            const message = `مرحباً، أرغب في طلب خدمة من لمسة نجار:
+            
+الاسم: ${name}
+رقم الهاتف: ${phone}
+نوع الخدمة: ${service}
+تفاصيل الطلب: ${details}`;
+            
+            // Open WhatsApp
+            const whatsappURL = `https://wa.me/966506786367?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+            
+            // Reset form
+            this.reset();
+            
+            // Show success message
+            showSuccessMessage();
+        });
+
+        // Success message function
+        function showSuccessMessage() {
+            const successModal = document.createElement('div');
+            successModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            successModal.innerHTML = `
+                <div class="bg-white rounded-2xl p-8 max-w-md mx-4 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-check text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-sage-800 mb-4">تم الإرسال بنجاح</h3>
+                    <p class="text-sage-600 mb-6">تم توجيهك إلى واتساب لإكمال طلبك</p>
+                    <button onclick="this.closest('.fixed').remove()" class="bg-wood-500 text-white px-6 py-3 rounded-xl font-semibold hover:bg-wood-600 transition-colors">
+                        موافق
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(successModal);
+            
+            // Auto remove after 3 seconds
+            setTimeout(() => {
+                successModal.remove();
+            }, 3000);
+        }
+
+        // Gallery items click effect
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Add a simple scale effect
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.card-hover, .gallery-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add loading states
+        function showLoadingState(element) {
+            element.style.opacity = '0.7';
+            element.style.pointerEvents = 'none';
+        }
+
+        function hideLoadingState(element) {
+            element.style.opacity = '1';
+            element.style.pointerEvents = 'auto';
+        }
+    </script>
 </body>
 </html>
